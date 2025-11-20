@@ -1,0 +1,113 @@
+version: '3.8'
+
+services:
+  # ==========================================
+  # Backend Node.js
+  # ==========================================
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: gs-backend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - TINYGS_USER=${TINYGS_USER}
+      - TINYGS_PASS=${TINYGS_PASS}
+      - SATNOGS_STATION_ID=${SATNOGS_STATION_ID}
+      - SATNOGS_API_KEY=${SATNOGS_API_KEY}
+    env_file:
+      - ./backend/.env
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    networks:
+      - gs-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ==========================================
+  # Frontend React (Nginx para produção)
+  # ==========================================
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gs-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - gs-network
+
+  # ==========================================
+  # Node-RED (Opcional)
+  # ==========================================
+  nodered:
+    image: nodered/node-red:latest
+    container_name: gs-nodered
+    restart: unless-stopped
+    ports:
+      - "1880:1880"
+    environment:
+      - TZ=Europe/Lisbon
+    volumes:
+      - nodered-data:/data
+      - ./nodered:/flows
+    networks:
+      - gs-network
+
+  # ==========================================
+  # InfluxDB (Opcional - para armazenamento)
+  # ==========================================
+  influxdb:
+    image: influxdb:2.7
+    container_name: gs-influxdb
+    restart: unless-stopped
+    ports:
+      - "8086:8086"
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=admin
+      - DOCKER_INFLUXDB_INIT_PASSWORD=adminpassword
+      - DOCKER_INFLUXDB_INIT_ORG=groundstation
+      - DOCKER_INFLUXDB_INIT_BUCKET=satellite-data
+    volumes:
+      - influxdb-data:/var/lib/influxdb2
+    networks:
+      - gs-network
+
+  # ==========================================
+  # Grafana (Opcional - para visualização)
+  # ==========================================
+  grafana:
+    image: grafana/grafana:latest
+    container_name: gs-grafana
+    restart: unless-stopped
+    ports:
+      - "3001:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_INSTALL_PLUGINS=grafana-clock-panel
+    volumes:
+      - grafana-data:/var/lib/grafana
+    depends_on:
+      - influxdb
+    networks:
+      - gs-network
+
+networks:
+  gs-network:
+    driver: bridge
+
+volumes:
+  nodered-data:
+  influxdb-data:
+  grafana-data:
