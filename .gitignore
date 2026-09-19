@@ -1,0 +1,66 @@
+# .gitignore único do repositório: cobre backend/ e frontend/ por padrões sem âncora.
+# Os .gitignore de backend/ e frontend/ground-station-dashboard/ mantêm-se e só acrescentam o específico deles.
+
+# ── Dependências ───────────────────────────────────────────────
+node_modules/
+venv/
+__pycache__/
+*.pyc
+
+# ── Logs ───────────────────────────────────────────────────────
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ── Segredos e configuração local ──────────────────────────────
+.env
+.env.*
+!.env.example
+credentials.h
+!credentials.h.example
+*.pem
+*.key
+
+# ── Build ──────────────────────────────────────────────────────
+dist/
+dist-ssr/
+build/
+*.local
+
+# ── Firmware do gateway: NÃO é publicado ───────────────────────
+# Contém lógica de descodificação específica da missão CorkSAT (ver README).
+*.ino
+firmware/
+tinygs-beta/
+
+# ── Ferramentas e artefactos locais ────────────────────────────
+*.jar
+# cópias de segurança manuais (podem guardar versões antigas do código)
+*.backup
+*.backup.*
+*.bak
+*.orig
+.claude/
+# meta-prompts de trabalho (um deles contém um literal de password)
+PROMPT_*.md
+# ficheiros soltos na raiz que não fazem parte do projeto publicado
+# (a versão de nodetestapi.js que conta está em backend/; estrutura.txt descreve o layout antigo)
+/nodetestapi.js
+/estrutura.txt
+# guia de integração desatualizado (refere ficheiros que já não existem)
+/backend/INDEX_MASTER.md
+
+# ── Editor / sistema ───────────────────────────────────────────
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

@@ -1,0 +1,67 @@
+@startuml
+title Arquitetura Simplificada - Camadas Principais
+
+skinparam componentStyle rectangle
+skinparam packageStyle rectangle
+
+!define DB(name) database name
+!define SERVER(name) component name
+!define UI(name) component name
+
+package "1. Camada de Espaço e Dados Externos" {
+    cloud "TinyGS Network (MQTT)" as TinyGS
+    cloud "SatNOGS Network (REST)" as SatNOGS
+}
+
+package "2. Camada de Backend (Node.js)" {
+    SERVER [Data Integration (MQTT/HTTP Clients)] as Integration
+    SERVER [Auth Service & REST API] as AuthAPI
+    SERVER [WebSocket Server (Socket.io)] as WSServer
+}
+
+package "3. Camada de Dados" {
+    DB [Memory Buffer (In-Memory)] as Buffer
+    DB [Storage Local (Frontend Token)] as LocalDB
+}
+
+package "4. Camada de Frontend (React)" {
+    UI [Interface de Autenticação] as LoginUI
+    UI [WebSockets Client / Hooks] as WSClient
+    UI [Páginas Principais (Dashboard, Tracking)] as UI_Pages
+}
+
+' Fluxo de Dados
+TinyGS --> Integration : MQTTS (Real-time Telemetry)
+SatNOGS --> Integration : HTTPS (API Data)
+Integration --> Buffer : Store/Normalize Data
+Buffer --> WSServer : Real-time Feed
+
+' Fluxo de Autenticação
+LoginUI --> AuthAPI : POST /login (Credenciais)
+AuthAPI --> AuthAPI : Geração/Validação JWT
+AuthAPI --> LoginUI : Retorna Token
+LoginUI --> LocalDB : Armazena Token
+
+' Conexão em Tempo Real
+LocalDB --> WSClient : Token para Conexão
+WSClient --> WSServer : WebSocket + Auth
+WSServer --> WSClient : Eventos/Dados em Tempo Real
+WSClient --> UI_Pages : Apresenta Dados
+
+' Informação Adicional
+note right of AuthAPI
+Geração de JWT (Stateless Auth)
+Validação de todas as conexões
+end note
+
+note right of WSServer
+Distribui dados em tempo real
+para múltiplos clientes
+end note
+
+note left of Buffer
+FIFO de 100 pacotes
+Future: InfluxDB
+end note
+
+@enduml

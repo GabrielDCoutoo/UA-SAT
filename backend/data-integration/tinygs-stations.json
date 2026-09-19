@@ -1,0 +1,212 @@
+[
+  {
+    "id": "gs_immenreuth",
+    "name": "GS_Immenreuth",
+    "lat": 49.8234,
+    "lng": 12.0456,
+    "status": "online"
+  },
+  {
+    "id": "courtyard1122",
+    "name": "Courtyard1122",
+    "lat": 37.7749,
+    "lng": -122.4194,
+    "status": "online"
+  },
+  {
+    "id": "nfdjee",
+    "name": "NFDJee",
+    "lat": 51.5074,
+    "lng": -0.1278,
+    "status": "online"
+  },
+  {
+    "id": "dl1jhr_433_02",
+    "name": "DL1JHR_433_02",
+    "lat": 52.52,
+    "lng": 13.405,
+    "status": "online"
+  },
+  {
+    "id": "octoatetinygs",
+    "name": "OctoateTinyGS",
+    "lat": 48.8566,
+    "lng": 2.3522,
+    "status": "online"
+  },
+  {
+    "id": "ua_aveiro_gs",
+    "name": "UA_Aveiro_GS",
+    "lat": 40.6413,
+    "lng": -8.6535,
+    "status": "online"
+  },
+  {
+    "id": "madrid_station",
+    "name": "Madrid_Station",
+    "lat": 40.4168,
+    "lng": -3.7038,
+    "status": "online"
+  },
+  {
+    "id": "berlin_tinygs",
+    "name": "Berlin_TinyGS",
+    "lat": 52.52,
+    "lng": 13.405,
+    "status": "online"
+  },
+  {
+    "id": "paris_gs",
+    "name": "Paris_GS",
+    "lat": 48.8566,
+    "lng": 2.3522,
+    "status": "online"
+  },
+  {
+    "id": "london_receiver",
+    "name": "London_Receiver",
+    "lat": 51.5074,
+    "lng": -0.1278,
+    "status": "online"
+  },
+  {
+    "id": "tokyo_station",
+    "name": "Tokyo_Station",
+    "lat": 35.6762,
+    "lng": 139.6503,
+    "status": "online"
+  },
+  {
+    "id": "sydney_gs",
+    "name": "Sydney_GS",
+    "lat": -33.8688,
+    "lng": 151.2093,
+    "status": "online"
+  },
+  {
+    "id": "newyork_tinygs",
+    "name": "NewYork_TinyGS",
+    "lat": 40.7128,
+    "lng": -74.006,
+    "status": "online"
+  },
+  {
+    "id": "moscow_receiver",
+    "name": "Moscow_Receiver",
+    "lat": 55.7558,
+    "lng": 37.6173,
+    "status": "online"
+  },
+  {
+    "id": "beijing_gs",
+    "name": "Beijing_GS",
+    "lat": 39.9042,
+    "lng": 116.4074,
+    "status": "online"
+  },
+  {
+    "id": "mumbai_station",
+    "name": "Mumbai_Station",
+    "lat": 19.076,
+    "lng": 72.8777,
+    "status": "online"
+  },
+  {
+    "id": "saopaulo_tinygs",
+    "name": "SaoPaulo_TinyGS",
+    "lat": -23.5505,
+    "lng": -46.6333,
+    "status": "online"
+  },
+  {
+    "id": "cairo_gs",
+    "name": "Cairo_GS",
+    "lat": 30.0444,
+    "lng": 31.2357,
+    "status": "online"
+  },
+  {
+    "id": "melbourne_receiver",
+    "name": "Melbourne_Receiver",
+    "lat": -37.8136,
+    "lng": 144.9631,
+    "status": "online"
+  },
+  {
+    "id": "singapore_tinygs",
+    "name": "Singapore_TinyGS",
+    "lat": 1.3521,
+    "lng": 103.8198,
+    "status": "online"
+  },
+  {
+    "id": "dubai_gs",
+    "name": "Dubai_GS",
+    "lat": 25.2048,
+    "lng": 55.2708,
+    "status": "online"
+  },
+  {
+    "id": "toronto_station",
+    "name": "Toronto_Station",
+    "lat": 43.6532,
+    "lng": -79.3832,
+    "status": "online"
+  },
+  {
+    "id": "mexico_city_gs",
+    "name": "MexicoCity_GS",
+    "lat": 19.4326,
+    "lng": -99.1332,
+    "status": "online"
+  },
+  {
+    "id": "santiago_tinygs",
+    "name": "Santiago_TinyGS",
+    "lat": -33.4489,
+    "lng": -70.6693,
+    "status": "online"
+  },
+  {
+    "id": "buenos_aires_receiver",
+    "name": "BuenosAires_Receiver",
+    "lat": -34.6037,
+    "lng": -58.3816,
+    "status": "online"
+  },
+  {
+    "id": "johannesburg_gs",
+    "name": "Johannesburg_GS",
+    "lat": -26.2041,
+    "lng": 28.0473,
+    "status": "online"
+  },
+  {
+    "id": "stockholm_station",
+    "name": "Stockholm_Station",
+    "lat": 59.3293,
+    "lng": 18.0686,
+    "status": "online"
+  },
+  {
+    "id": "oslo_tinygs",
+    "name": "Oslo_TinyGS",
+    "lat": 59.9139,
+    "lng": 10.7522,
+    "status": "online"
+  },
+  {
+    "id": "helsinki_gs",
+    "name": "Helsinki_GS",
+    "lat": 60.1699,
+    "lng": 24.9384,
+    "status": "online"
+  },
+  {
+    "id": "istanbul_receiver",
+    "name": "Istanbul_Receiver",
+    "lat": 41.0082,
+    "lng": 28.9784,
+    "status": "online"
+  }
+]
