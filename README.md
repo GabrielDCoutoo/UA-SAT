@@ -103,7 +103,7 @@ A leitura é pública por desenho. Só as ações de escrita exigem credenciais:
 - O token da SatNOGS fica só no servidor: o frontend agenda observações através do proxy do backend.
 - O WebSocket (Socket.io) difunde dados de leitura e aceita ligações sem token.
 
-## Segredos e configuração
+## Autenticação e configuração
 
 Nenhuma credencial está no código: tudo vem de variáveis de ambiente (`backend/.env`, ignorado pelo git). O `.env.example` deixa em branco os campos que dão acesso (`JWT_SECRET`, passwords do dashboard, `GNSS_API_KEY`, passwords do Docker), de modo que um clone sem os preencher falha em vez de ficar com valores conhecidos.
 
